@@ -94,6 +94,10 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+/* 
+body::-webkit-scrollbar {
+  display: none;
+} */
 
 a {
   color: inherit;
