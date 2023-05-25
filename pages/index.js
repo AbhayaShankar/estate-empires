@@ -32,14 +32,22 @@ const Banner = ({
         {desc1} <br /> {desc2}
       </Text>
 
-      <Button fontSize="20px" bgColor={"gray.300"}>
+      <Button
+        paddingX={6}
+        paddingY={4}
+        fontSize="20px"
+        bgColor={"gray.300"}
+        color={"gray.700"}
+      >
         <Link href={linkName}>{buttonText}</Link>
       </Button>
     </Box>
   </Flex>
 );
 
-export default function Home() {
+export default function Home({ propertiesForSale, propertiesForRent }) {
+  console.log("For Sale", propertiesForSale);
+  console.log("For Rent", propertiesForRent);
   return (
     <Box>
       <Banner
@@ -68,4 +76,20 @@ export default function Home() {
       <Flex>{/* Fetch the properties for "BUY A HOME" from API */}</Flex>
     </Box>
   );
+}
+
+export async function getStaticProps() {
+  const propertyForSale = await fetchAPI(
+    `${baseURL}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=9`
+  );
+  const propertyForRent = await fetchAPI(
+    `${baseURL}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=9`
+  );
+
+  return {
+    props: {
+      propertiesForSale: propertyForSale?.hits,
+      propertiesForRent: propertyForRent?.hits,
+    },
+  };
 }
