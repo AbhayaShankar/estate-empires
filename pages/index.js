@@ -47,8 +47,8 @@ const Banner = ({
 );
 
 export default function Home({ propertiesForSale, propertiesForRent }) {
-  console.log("For Sale", propertiesForSale);
-  console.log("For Rent", propertiesForRent);
+  // console.log("For Sale", propertiesForSale);
+  // console.log("For Rent", propertiesForRent);
   return (
     <Box>
       <Banner
