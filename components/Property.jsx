@@ -20,6 +20,7 @@ const Property = ({ property }) => {
     agency,
     isVerified,
     externalID,
+    title_l2,
   } = property;
   return (
     <Link href={`/property/${externalID}`} passHref>
@@ -62,11 +63,18 @@ const Property = ({ property }) => {
             alignItems={"center"}
             p={1}
             justifyContent={"space-between"}
-            w={200}
+            w={220}
             color={"blue.400"}
           >
-            {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sq ft.
+            {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sq ft.{" "}
+            <BsGridFill />
           </Flex>
+          <Text fontSize={"lg"}>
+            {title?.length > 30 ? `${title?.substring(0, 30)}...` : { title }}
+          </Text>
+          <Text color={"#747572"} fontSize={"xs"}>
+            {title_l2}
+          </Text>
         </Box>
       </Flex>
     </Link>

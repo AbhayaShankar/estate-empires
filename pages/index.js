@@ -63,7 +63,12 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
           "https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
         }
       />
-      <Flex flexWrap={"wrap"} alignItems={"center"} justifyContent={"center"}>
+      <Flex
+        flexWrap={"wrap"}
+        alignItems={"center"}
+        justifyContent={"center"}
+        rowGap={5}
+      >
         {/* Fetch the properties for "RENT A H
         OME" from API */}
         {propertiesForRent.map((property) => (
@@ -80,7 +85,12 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
         linkName="/search?purpose=for-sale"
         imageURL={"/dreamHome.jpg"}
       />
-      <Flex flexWrap={"wrap"} alignItems={"center"} justifyContent={"center"}>
+      <Flex
+        flexWrap={"wrap"}
+        alignItems={"center"}
+        justifyContent={"center"}
+        rowGap={5}
+      >
         {/* Fetch the properties for "BUY A HOME" from API */}
         {propertiesForSale.map((property) => (
           <Property property={property} key={property.id} />
