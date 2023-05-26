@@ -25,7 +25,8 @@ const Property = ({ property }) => {
     <Link href={`/property/${externalID}`} passHref>
       <Flex
         flexWrap="wrap"
-        w={"420px"}
+        width={400}
+        // height={300}
         p={5}
         paddingTop={0}
         justifyContent={"flex-start"}
@@ -36,7 +37,36 @@ const Property = ({ property }) => {
             width={400}
             height={260}
             alt={title}
+            style={{ height: 260, borderRadius: 5 }}
           />
+        </Box>
+        <Box width={"full"}>
+          <Flex
+            paddingTop={"2"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+          >
+            <Box>
+              <Avatar size={"sm"} src={agency?.logo?.url} />
+            </Box>
+            <Flex alignItems={"center"}>
+              <Box paddingRight={3} color={"green.300"}>
+                {isVerified && <GoVerified />}
+              </Box>
+              <Text fontWeight={"semibold"} fontSize={"md"} color={"#747572"}>
+                AED {millify(price)} {rentFrequency && `/ ${rentFrequency}`}{" "}
+              </Text>
+            </Flex>
+          </Flex>
+          <Flex
+            alignItems={"center"}
+            p={1}
+            justifyContent={"space-between"}
+            w={200}
+            color={"blue.400"}
+          >
+            {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sq ft.
+          </Flex>
         </Box>
       </Flex>
     </Link>

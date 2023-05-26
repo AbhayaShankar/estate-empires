@@ -47,7 +47,7 @@ const Banner = ({
 );
 
 export default function Home({ propertiesForSale, propertiesForRent }) {
-  // console.log("For Sale", propertiesForSale);
+  console.log("For Sale", propertiesForSale);
   // console.log("For Rent", propertiesForRent);
   return (
     <Box>
@@ -63,8 +63,9 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
           "https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
         }
       />
-      <Flex>
-        {/* Fetch the properties for "RENT A HOME" from API */}
+      <Flex flexWrap={"wrap"} alignItems={"center"} justifyContent={"center"}>
+        {/* Fetch the properties for "RENT A H
+        OME" from API */}
         {propertiesForRent.map((property) => (
           <Property property={property} key={property.id} />
         ))}
@@ -79,7 +80,7 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
         linkName="/search?purpose=for-sale"
         imageURL={"/dreamHome.jpg"}
       />
-      <Flex>
+      <Flex flexWrap={"wrap"} alignItems={"center"} justifyContent={"center"}>
         {/* Fetch the properties for "BUY A HOME" from API */}
         {propertiesForSale.map((property) => (
           <Property property={property} key={property.id} />
