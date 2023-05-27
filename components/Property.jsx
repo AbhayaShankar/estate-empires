@@ -37,7 +37,7 @@ const Property = ({ property }) => {
             src={coverPhoto ? coverPhoto.url : defaultImage}
             width={400}
             height={260}
-            alt={title}
+            alt="Image"
             style={{ height: 260, borderRadius: 5 }}
           />
         </Box>
@@ -70,10 +70,12 @@ const Property = ({ property }) => {
             <BsGridFill />
           </Flex>
           <Text fontSize={"lg"}>
-            {title?.length > 30 ? `${title?.substring(0, 30)}...` : { title }}
+            {title?.length > 30 ? `${title?.substring(0, 30)}...` : title}
           </Text>
           <Text color={"#747572"} fontSize={"xs"}>
-            {title_l2}
+            {title_l2?.length > 60
+              ? `${title_l2?.substring(0, 55)}...`
+              : title_l2}
           </Text>
         </Box>
       </Flex>
