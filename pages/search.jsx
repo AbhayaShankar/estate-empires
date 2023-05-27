@@ -16,7 +16,7 @@ const Search = ({ properties }) => {
     <Box>
       <Flex
         cursor={"pointer"}
-        bg={"#ededed"}
+        bg={"#F2F0F0"}
         p={2}
         fontSize={"lg"}
         justifyContent={"center"}
