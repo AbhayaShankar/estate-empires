@@ -26,7 +26,7 @@ const Banner = ({
       <Text color="gray.500" fontSize="md" fontWeight="medium">
         {purpose}
       </Text>
-      <Text fontSize="20px" fontWeight="bold">
+      <Text fontSize="20px" fontWeight="semibold">
         {title1} <br /> {title2}
       </Text>
       <Text fontSize="lg" paddingBottom={3} paddingTop={3} color={"gray.700"}>
@@ -34,9 +34,9 @@ const Banner = ({
       </Text>
 
       <Button
-        paddingX={6}
+        paddingX={4}
         paddingY={4}
-        fontSize="20px"
+        fontSize="18px"
         bgColor={"gray.300"}
         color={"gray.700"}
       >
@@ -50,7 +50,7 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
   console.log("For Sale", propertiesForSale);
   console.log("For Rent", propertiesForRent);
   return (
-    <Box>
+    <Box fontFamily={"Poppins , sans-serif"}>
       <Banner
         purpose={"RENT A HOME"}
         title1="Rental Homes for"

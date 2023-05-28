@@ -31,6 +31,7 @@ const Property = ({ property }) => {
         p={5}
         paddingTop={0}
         justifyContent={"flex-start"}
+        fontFamily={"Poppins , sans-serif"}
       >
         <Box>
           <Image
@@ -74,7 +75,7 @@ const Property = ({ property }) => {
           </Text>
           <Text color={"#747572"} fontSize={"xs"}>
             {title_l2?.length > 60
-              ? `${title_l2?.substring(0, 55)}...`
+              ? `${title_l2?.substring(0, 50)}...`
               : title_l2}
           </Text>
         </Box>

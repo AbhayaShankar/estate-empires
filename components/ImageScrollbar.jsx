@@ -40,6 +40,7 @@ const ImageScrollbar = ({ data }) => {
               src={item.url}
               width={1000}
               height={500}
+              style={{ borderRadius: "8px", marginTop: "20px" }}
               sizes="(max-width:500px) 100px , (max-width: 1024px) 400px, 1200px"
             />
           </SwiperSlide>
