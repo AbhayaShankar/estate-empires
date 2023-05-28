@@ -36,13 +36,14 @@ const Navbar = () => {
         </Link>
       </Box>
       <Spacer />
-      <Box>
+      <Box style={{ zIndex: 100 }}>
         <Menu>
           <MenuButton
             as={IconButton}
             aria-label="Options"
             icon={<FcMenu />}
             variant="outline"
+
             // color={"#94A187"}
             // backgroundColor="#94A1874d"
           />

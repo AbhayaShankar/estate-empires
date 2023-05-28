@@ -1,65 +1,52 @@
+import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { useContext } from "react";
-import { Box, Icon, Flex } from "@chakra-ui/react";
-import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
-const LeftArrow = () => {
-  const { scrollPrev } = useContext(VisibilityContext);
+import "./swiperstyle.module.css";
 
-  return (
-    <Flex alignItems={"center"} justifyContent={"center"} marginRight={1}>
-      <Icon
-        as={FaArrowAltCircleLeft}
-        onClick={() => scrollPrev()}
-        fontSize={"20px"}
-        cursor={"pointer"}
-      />
-    </Flex>
-  );
-};
+// import required modules
+import { FreeMode, Navigation, Thumbs } from "swiper";
 
-const RightArrow = () => {
-  const { scrollNext } = useContext(VisibilityContext);
+const ImageScrollbar = ({ data }) => {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <Flex alignItems={"center"} justifyContent={"center"} marginRight={1}>
-      <Icon
-        as={FaArrowAltCircleRight}
-        onClick={() => scrollNext()}
-        fontSize={"20px"}
-        cursor={"pointer"}
-      />
-    </Flex>
-  );
-};
-
-const ImageScrollbar = ({ data }) => (
-  <ScrollMenu
-    LeftArrow={LeftArrow}
-    RightArrow={RightArrow}
-    style={{ overflow: "hidden" }}
-  >
-    {data.map((item) => (
-      <Box
-        key={item.id}
-        width={"910px"}
-        itemID={item.id}
-        overflow={"hidden"}
-        paddingRight={1}
+    <>
+      <Swiper
+        style={{
+          "--swiper-navigation-color": "#fff",
+          "--swiper-pagination-color": "#fff",
+        }}
+        loop={true}
+        spaceBetween={10}
+        navigation={true}
+        thumbs={{ swiper: thumbsSwiper }}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="mySwiper2"
       >
-        <Image
-          alt="Property Image"
-          placeholder="blur"
-          blurDataURL={item.url}
-          src={item.url}
-          width={1000}
-          height={500}
-          sizes="(max-width:500px) 100px , (max-width: 1024px) 400px, 1000px"
-        />
-      </Box>
-    ))}
-  </ScrollMenu>
-);
+        {data?.map((item) => (
+          <SwiperSlide
+            key={item.id}
+            style={{ width: "500px", height: "600px" }}
+          >
+            <Image
+              alt="Property Image"
+              placeholder="blur"
+              blurDataURL={item.url}
+              src={item.url}
+              width={1000}
+              height={500}
+              sizes="(max-width:500px) 100px , (max-width: 1024px) 400px, 1200px"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
+  );
+};
 
 export default ImageScrollbar;
