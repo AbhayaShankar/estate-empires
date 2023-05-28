@@ -9,15 +9,28 @@ import {
   Icon,
   Button,
 } from "@chakra-ui/react";
-import Router from "next/router";
+import useRouter from "next/router";
 import { MdCancel } from "react-icons/md";
 import Image from "next/image";
 import { filterData, getFilterValues } from "@/utils/FilterData";
 
 const SearchFilters = () => {
+  const router = useRouter();
+
   const [filters, setFilters] = useState(filterData);
 
-  const searchProperties = () => {};
+  const searchProperties = (filterValues) => {
+    const path = router.pathname;
+    const { query } = router;
+
+    const values = getFilterValues(filterValues);
+
+    values.forEach((item) => {
+      query[item.name] = item.value;
+    });
+
+    router.push({ pathname: path, query });
+  };
 
   return (
     <Flex bg={"#F2F0F0"} p={4} justifyContent={"center"} flexWrap={"wrap"}>
