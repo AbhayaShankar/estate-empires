@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { MdCancel } from "react-icons/md";
 import Image from "next/image";
 import { filterData, getFilterValues } from "@/utils/FilterData";
+import millify from "millify";
 
 const SearchFilters = () => {
   const router = useRouter();
@@ -26,14 +27,16 @@ const SearchFilters = () => {
     const values = getFilterValues(filterValues);
 
     values.forEach((item) => {
-      query[item.name] = item.value;
+      if (item.value && filterValues?.[item.name]) {
+        query[item.name] = item.value;
+      }
     });
 
     router.push({ pathname: path, query });
   };
 
   return (
-    <Flex bg={"#F2F0F0"} p={4} justifyContent={"center"} flexWrap={"wrap"}>
+    <Flex bg={"#f8f8f8"} p={4} justifyContent={"center"} flexWrap={"wrap"}>
       {filters.map((filter) => (
         <Box key={filter.queryName} paddingX={1}>
           <Select
@@ -46,8 +49,12 @@ const SearchFilters = () => {
             }
           >
             {filter?.items?.map((item) => (
-              <option value={item.value} key={item.name}>
-                {item.name}
+              <option
+                style={{ letterSpacing: "0.5px" }}
+                value={millify(item.value)}
+                key={item.name}
+              >
+                {millify(item.name)}
               </option>
             ))}
           </Select>
