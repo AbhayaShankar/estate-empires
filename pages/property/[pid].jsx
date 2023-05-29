@@ -103,17 +103,42 @@ const PropertyDetail = ({
             </Text>
           </Flex>
         </Flex>
-        <Flex
-          alignItems={"center"}
-          p={1}
-          justifyContent={"space-between"}
-          w={220}
-          color={"blue.400"}
-        >
-          {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sq ft.{" "}
-          <BsGridFill />
+        <Flex alignItems={"center"} gap={12} mt={3}>
+          <Flex
+            alignItems={"center"}
+            p={1}
+            justifyContent={"space-between"}
+            w={220}
+            color={"blue.400"}
+          >
+            {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sq ft.{" "}
+            <BsGridFill />
+          </Flex>
+          <Flex alignItems={"center"}>
+            {category.length && (
+              <Flex gap={5}>
+                {category.map((cat) => (
+                  <Text
+                    key={cat.id}
+                    fontSize={15}
+                    bgColor={"#fcfcfc30"}
+                    color={"#000"}
+                    px={2}
+                    py={1}
+                    borderRadius={6}
+                    letterSpacing={0.35}
+                    boxShadow={"inset #d8d8da 0 0 0 1px"}
+                    backdropFilter="blur(8px)"
+                    _hover={{ backdropFilter: "blur(4px)" }}
+                  >
+                    {cat.name}
+                  </Text>
+                ))}
+              </Flex>
+            )}
+          </Flex>
         </Flex>
-        <Box marginTop={"2"}>
+        <Box marginTop={"3"}>
           <Text
             fontSize={"lg"}
             fontWeight={"semibold"}
