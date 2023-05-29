@@ -9,6 +9,17 @@ import millify from "millify";
 import { baseURL, fetchAPI } from "@/utils/fetchAPI";
 import ImageScrollbar from "@/components/ImageScrollbar";
 
+import starfull from "../../assets/SVGs/star-full.svg";
+import starhalf from "../../assets/SVGs/star-half.svg";
+
+export const StarFull = () => (
+  <Image src={starfull} alt="star-full" width={26} height={26} />
+);
+
+export const StarHalf = () => (
+  <Image src={starhalf} alt="star-half" width={30} height={30} />
+);
+
 const PropertyDetail = ({
   propertyDetails: {
     price,
@@ -30,6 +41,22 @@ const PropertyDetail = ({
     category,
   },
 }) => {
+  const starScore = score / 20;
+
+  const IntegerStarScore = Math.floor(starScore);
+  const DecimalStarScore = starScore - IntegerStarScore;
+
+  console.log(IntegerStarScore, DecimalStarScore);
+
+  const stars = [];
+  for (let i = 0; i < IntegerStarScore; i++) {
+    stars.push(<StarFull key={i} />);
+  }
+
+  if (DecimalStarScore > 0) {
+    stars.push(<StarHalf key={IntegerStarScore} />);
+  }
+
   return (
     <Box
       maxWidth={"1000px"}
@@ -38,6 +65,26 @@ const PropertyDetail = ({
       fontFamily={"Poppins , sans-serif"}
     >
       {photos && <ImageScrollbar data={photos} />}
+      <Flex
+        zIndex={100}
+        position={"relative"}
+        left={3}
+        top={-14}
+        mt={2}
+        mb={1}
+        // padding={2}
+        px={2}
+        py={1}
+        backgroundColor={"#fcfcfc30"}
+        width={"fit-content"}
+        borderRadius={5}
+        alignItems={"center"}
+        backdropFilter="blur(8px)"
+        _hover={{ backdropFilter: "blur(4px)" }}
+        gap={"6px"}
+      >
+        {stars}
+      </Flex>
       <Box width={"full"}>
         <Flex
           paddingTop={"2"}
@@ -80,6 +127,7 @@ const PropertyDetail = ({
             {description}
           </Text>
         </Box>
+
         <Flex
           flexWrap="wrap"
           textTransform="uppercase"
