@@ -6,8 +6,6 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-import "./swiperstyle.module.css";
-
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
@@ -31,7 +29,7 @@ const ImageScrollbar = ({ data }) => {
         {data?.map((item) => (
           <SwiperSlide
             key={item.id}
-            style={{ width: "500px", height: "600px" }}
+            // style={{ width: "500px", height: "600px" }}
           >
             <Image
               alt="Property Image"
@@ -41,7 +39,7 @@ const ImageScrollbar = ({ data }) => {
               width={1000}
               height={500}
               style={{ borderRadius: "8px", marginTop: "20px" }}
-              sizes="(max-width:500px) 100px , (max-width: 1024px) 400px, 1200px"
+              sizes="(max-width:500px) 250px , (max-width: 1024px) 400px, 1200px"
             />
           </SwiperSlide>
         ))}

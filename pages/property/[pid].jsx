@@ -13,11 +13,23 @@ import starfull from "../../assets/SVGs/star-full.svg";
 import starhalf from "../../assets/SVGs/star-half.svg";
 
 export const StarFull = () => (
-  <Image src={starfull} alt="star-full" width={26} height={26} />
+  <Image
+    className="star-full"
+    src={starfull}
+    alt="star-full"
+    width={26}
+    height={26}
+  />
 );
 
 export const StarHalf = () => (
-  <Image src={starhalf} alt="star-half" width={30} height={30} />
+  <Image
+    className="star-half"
+    src={starhalf}
+    alt="star-half"
+    width={30}
+    height={30}
+  />
 );
 
 const PropertyDetail = ({
@@ -63,6 +75,7 @@ const PropertyDetail = ({
       margin={"auto"}
       p={2}
       fontFamily={"Poppins , sans-serif"}
+      //   maxWidth={{ base: "fit-content", md: "1000px" }}
     >
       {photos && <ImageScrollbar data={photos} />}
       <Flex
@@ -103,7 +116,14 @@ const PropertyDetail = ({
             </Text>
           </Flex>
         </Flex>
-        <Flex alignItems={"center"} gap={12} mt={3}>
+        <Flex
+          //   alignItems={"center"}
+          mt={3}
+          display={{ base: "flex", md: "flex" }}
+          flexDirection={{ base: "column", md: "row" }}
+          gap={{ base: "4", md: "12" }}
+          alignItems={{ base: "flex-start", md: "center" }}
+        >
           <Flex
             alignItems={"center"}
             p={1}

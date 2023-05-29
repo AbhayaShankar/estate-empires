@@ -18,18 +18,22 @@ const Navbar = () => {
   return (
     <Flex
       p={2}
-      paddingX={50}
+      // paddingX={50}
       paddingTop={4}
       borderBottom={1}
       borderColor={"gray.200"}
       style={{ borderBottom: "1px solid #D0CDD7" }}
+      paddingX={{ base: 5, md: 50 }}
     >
       <Box
-        fontSize={"3xl"}
+        // fontSize={"3xl"}
         color={"#94A187"}
         // #6d8c53
         fontWeight={"bold"}
         fontFamily={"Montserrat , sans-serif"}
+        fontSize={{ base: "20px", md: "31px" }}
+        display={"flex"}
+        alignItems={"center"}
       >
         <Link href={"/"} paddingLeft={"2"}>
           Estate Empire

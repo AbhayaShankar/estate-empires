@@ -111,3 +111,15 @@ a {
     color-scheme: dark;
   }
 }
+
+@media (max-width: 768px) {
+  .star-full {
+    width: 18px;
+    height: 18px;
+  }
+
+  .star-half {
+    width: 22px;
+    height: 22px;
+  }
+}

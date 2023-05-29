@@ -5,6 +5,7 @@ import NProgress from "nprogress";
 import Layout from "@/components/Layout";
 import { Fragment } from "react";
 import { Router } from "next/router";
+import "../styles/style.css";
 
 export default function App({ Component, pageProps }) {
   NProgress.configure({ showSpinner: false });
