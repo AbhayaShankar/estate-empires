@@ -1,17 +1,6 @@
-import { useEffect, useState } from "react";
-import {
-  Flex,
-  Box,
-  Select,
-  Text,
-  Input,
-  Spinenr,
-  Icon,
-  Button,
-} from "@chakra-ui/react";
+import { useState } from "react";
+import { Flex, Box, Select } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { MdCancel } from "react-icons/md";
-import Image from "next/image";
 import { filterData, getFilterValues } from "@/utils/FilterData";
 import millify from "millify";
 
@@ -51,7 +40,7 @@ const SearchFilters = () => {
             {filter?.items?.map((item) => (
               <option
                 style={{ letterSpacing: "0.5px" }}
-                value={millify(item.value)}
+                value={item.value}
                 key={item.name}
               >
                 {millify(item.name)}
