@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { Flex, Box, Text, Icon } from "@chakra-ui/react";
@@ -7,61 +7,71 @@ import SearchFilters from "@/components/SearchFilters";
 import Property from "@/components/Property";
 import noresult from "../assets/images/noresult.png";
 import { baseURL, fetchAPI } from "@/utils/fetchAPI";
+import Head from "next/head";
 
 const Search = ({ properties }) => {
   const [searchFilters, setSearchFilters] = useState(false);
   const router = useRouter();
 
   return (
-    <Box>
-      <Flex
-        cursor={"pointer"}
-        bg={"#f8f8f8"}
-        p={2}
-        fontSize={"lg"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        // borderBottomRadius={80}
-        onClick={() => setSearchFilters(!searchFilters)}
-      >
-        <Text color={"#94A187"}>Search Properties by Filters</Text>
-        <Icon paddingLeft={2} w={10} as={BsFilter} />
-      </Flex>
-      {searchFilters && <SearchFilters />}
-      <Text
-        textTransform={"capitalize"}
-        fontSize={"lg"}
-        p={4}
-        fontWeight={600}
-        color={"gray.500"}
-      >
-        Properties {router.query.purpose}
-      </Text>
-      <Flex flexWrap={"wrap"}>
-        {properties.map((property) => (
-          <Property property={property} key={property.id} />
-        ))}
-      </Flex>
-      {properties.length === 0 && (
+    <Fragment>
+      <Head>
+        <title>Search your Dream Home</title>
+        <meta
+          name="description"
+          content="Lets you search for the dream home you always wanted."
+        />
+      </Head>
+      <Box>
         <Flex
+          cursor={"pointer"}
+          bg={"#f8f8f8"}
+          p={2}
+          fontSize={"lg"}
           justifyContent={"center"}
           alignItems={"center"}
-          flexDirection={"column"}
-          marginTop={5}
-          marginBottom={5}
+          // borderBottomRadius={80}
+          onClick={() => setSearchFilters(!searchFilters)}
         >
-          <Image width={80} alt="no-result" src={noresult} />
-          <Text
-            fontSize={"2xl"}
-            fontWeight={600}
-            marginTop={4}
-            color={"#292929"}
-          >
-            No Results Found 😞
-          </Text>
+          <Text color={"#94A187"}>Search Properties by Filters</Text>
+          <Icon paddingLeft={2} w={10} as={BsFilter} />
         </Flex>
-      )}
-    </Box>
+        {searchFilters && <SearchFilters />}
+        <Text
+          textTransform={"capitalize"}
+          fontSize={"lg"}
+          p={4}
+          fontWeight={600}
+          color={"gray.500"}
+        >
+          Properties {router.query.purpose}
+        </Text>
+        <Flex flexWrap={"wrap"}>
+          {properties.map((property) => (
+            <Property property={property} key={property.id} />
+          ))}
+        </Flex>
+        {properties.length === 0 && (
+          <Flex
+            justifyContent={"center"}
+            alignItems={"center"}
+            flexDirection={"column"}
+            marginTop={5}
+            marginBottom={5}
+          >
+            <Image width={80} alt="no-result" src={noresult} />
+            <Text
+              fontSize={"2xl"}
+              fontWeight={600}
+              marginTop={4}
+              color={"#292929"}
+            >
+              No Results Found 😞
+            </Text>
+          </Flex>
+        )}
+      </Box>
+    </Fragment>
   );
 };
 

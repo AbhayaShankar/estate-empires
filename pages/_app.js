@@ -22,7 +22,10 @@ export default function App({ Component, pageProps }) {
     <Fragment>
       <Head>
         <title>The Estate Empire - You think We Provide</title>
-        <meta />
+        <meta
+          name="description"
+          content="Estate empire lets you grab the opportunity to rent or buy your dream home with the best features possible."
+        />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"

@@ -49,7 +49,7 @@ const Property = ({ property }) => {
             justifyContent={"space-between"}
           >
             <Box>
-              <Avatar size={"sm"} src={agency?.logo?.url} />
+              <Avatar size={"sm"} src={agency?.logo?.url} alt={agency?.logo} />
             </Box>
             <Flex alignItems={"center"}>
               <Box paddingRight={3} color={"green.300"}>

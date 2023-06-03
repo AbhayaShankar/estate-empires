@@ -10,6 +10,8 @@ import ImageScrollbar from "@/components/ImageScrollbar";
 
 import starfull from "../../assets/SVGs/star-full.svg";
 import starhalf from "../../assets/SVGs/star-half.svg";
+import { Fragment } from "react";
+import Head from "next/head";
 
 export const StarFull = () => (
   <Image
@@ -69,135 +71,119 @@ const PropertyDetail = ({
   }
 
   return (
-    <Box
-      maxWidth={"1000px"}
-      margin={"auto"}
-      p={2}
-      fontFamily={"Poppins , sans-serif"}
-      //   maxWidth={{ base: "fit-content", md: "1000px" }}
-    >
-      {photos && <ImageScrollbar data={photos} />}
-      <Flex
-        zIndex={100}
-        position={"relative"}
-        left={3}
-        top={-14}
-        mt={2}
-        mb={1}
-        // padding={2}
-        px={2}
-        py={1}
-        backgroundColor={"#fcfcfc30"}
-        width={"fit-content"}
-        borderRadius={5}
-        alignItems={"center"}
-        backdropFilter="blur(8px)"
-        _hover={{ backdropFilter: "blur(4px)" }}
-        gap={"6px"}
+    <Fragment>
+      <Head>
+        <title>Estate Empire - {title}</title>
+        <meta name="description" content={description.trim(50)} />
+      </Head>
+      <Box
+        maxWidth={"1000px"}
+        margin={"auto"}
+        p={2}
+        fontFamily={"Poppins , sans-serif"}
+        //   maxWidth={{ base: "fit-content", md: "1000px" }}
       >
-        {stars}
-      </Flex>
-      <Box width={"full"}>
+        {photos && <ImageScrollbar data={photos} />}
         <Flex
-          paddingTop={"2"}
+          zIndex={100}
+          position={"relative"}
+          left={3}
+          top={-14}
+          mt={2}
+          mb={1}
+          // padding={2}
+          px={2}
+          py={1}
+          backgroundColor={"#fcfcfc30"}
+          width={"fit-content"}
+          borderRadius={5}
           alignItems={"center"}
-          justifyContent={"space-between"}
+          backdropFilter="blur(8px)"
+          _hover={{ backdropFilter: "blur(4px)" }}
+          gap={"6px"}
         >
-          <Box>
-            <Avatar size={"sm"} src={agency?.logo?.url} />
-          </Box>
-          <Flex alignItems={"center"}>
-            <Box paddingRight={3} color={"green.300"}>
-              {isVerified && <GoVerified />}
-            </Box>
-            <Text fontWeight={"semibold"} fontSize={"md"} color={"#747572"}>
-              AED {millify(price)} {rentFrequency && `/ ${rentFrequency}`}{" "}
-            </Text>
-          </Flex>
+          {stars}
         </Flex>
-        <Flex
-          //   alignItems={"center"}
-          mt={3}
-          display={{ base: "flex", md: "flex" }}
-          flexDirection={{ base: "column", md: "row" }}
-          gap={{ base: "4", md: "12" }}
-          alignItems={{ base: "flex-start", md: "center" }}
-        >
+        <Box width={"full"}>
           <Flex
+            paddingTop={"2"}
             alignItems={"center"}
-            p={1}
             justifyContent={"space-between"}
-            w={220}
-            color={"blue.400"}
           >
-            {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sq ft.{" "}
-            <BsGridFill />
+            <Box>
+              <Avatar size={"sm"} src={agency?.logo?.url} />
+            </Box>
+            <Flex alignItems={"center"}>
+              <Box paddingRight={3} color={"green.300"}>
+                {isVerified && <GoVerified />}
+              </Box>
+              <Text fontWeight={"semibold"} fontSize={"md"} color={"#747572"}>
+                AED {millify(price)} {rentFrequency && `/ ${rentFrequency}`}{" "}
+              </Text>
+            </Flex>
           </Flex>
-          <Flex alignItems={"center"}>
-            {category.length && (
-              <Flex gap={5}>
-                {category.map((cat) => (
-                  <Text
-                    key={cat.id}
-                    fontSize={15}
-                    bgColor={"#fcfcfc30"}
-                    color={"#000"}
-                    px={2}
-                    py={1}
-                    borderRadius={6}
-                    letterSpacing={0.35}
-                    boxShadow={"inset #d8d8da 0 0 0 1px"}
-                    backdropFilter="blur(8px)"
-                    _hover={{ backdropFilter: "blur(4px)" }}
-                  >
-                    {cat.name}
-                  </Text>
-                ))}
-              </Flex>
-            )}
-          </Flex>
-        </Flex>
-        <Box marginTop={"3"}>
-          <Text
-            fontSize={"lg"}
-            fontWeight={"semibold"}
-            letterSpacing={"0.3px"}
-            marginBottom={"2"}
-            textTransform={"uppercase"}
+          <Flex
+            //   alignItems={"center"}
+            mt={3}
+            display={{ base: "flex", md: "flex" }}
+            flexDirection={{ base: "column", md: "row" }}
+            gap={{ base: "4", md: "12" }}
+            alignItems={{ base: "flex-start", md: "center" }}
           >
-            {title}
-          </Text>
-          <Text lineHeight={"2"} color={"#747572"}>
-            {description}
-          </Text>
-        </Box>
+            <Flex
+              alignItems={"center"}
+              p={1}
+              justifyContent={"space-between"}
+              w={220}
+              color={"blue.400"}
+            >
+              {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sq ft.{" "}
+              <BsGridFill />
+            </Flex>
+            <Flex alignItems={"center"}>
+              {category.length && (
+                <Flex gap={5}>
+                  {category.map((cat) => (
+                    <Text
+                      key={cat.id}
+                      fontSize={15}
+                      bgColor={"#fcfcfc30"}
+                      color={"#000"}
+                      px={2}
+                      py={1}
+                      borderRadius={6}
+                      letterSpacing={0.35}
+                      boxShadow={"inset #d8d8da 0 0 0 1px"}
+                      backdropFilter="blur(8px)"
+                      _hover={{ backdropFilter: "blur(4px)" }}
+                    >
+                      {cat.name}
+                    </Text>
+                  ))}
+                </Flex>
+              )}
+            </Flex>
+          </Flex>
+          <Box marginTop={"3"}>
+            <Text
+              fontSize={"lg"}
+              fontWeight={"semibold"}
+              letterSpacing={"0.3px"}
+              marginBottom={"2"}
+              textTransform={"uppercase"}
+            >
+              {title}
+            </Text>
+            <Text lineHeight={"2"} color={"#747572"}>
+              {description}
+            </Text>
+          </Box>
 
-        <Flex
-          flexWrap="wrap"
-          textTransform="uppercase"
-          justifyContent="space-between"
-        >
           <Flex
+            flexWrap="wrap"
+            textTransform="uppercase"
             justifyContent="space-between"
-            w="400px"
-            borderBottom="1px"
-            borderColor="gray.100"
-            p="3"
           >
-            <Text>Type</Text>
-            <Text fontWeight="bold">{type}</Text>
-          </Flex>
-          <Flex
-            justifyContent="space-between"
-            w="400px"
-            borderBottom="1px"
-            borderColor="gray.100"
-            p="3"
-          >
-            <Text>Purpose</Text>
-            <Text fontWeight="bold">{purpose}</Text>
-          </Flex>
-          {furnishingStatus && (
             <Flex
               justifyContent="space-between"
               w="400px"
@@ -205,64 +191,86 @@ const PropertyDetail = ({
               borderColor="gray.100"
               p="3"
             >
-              <Text>Furnishing Status</Text>
-              <Text fontWeight="bold">{furnishingStatus}</Text>
+              <Text>Type</Text>
+              <Text fontWeight="bold">{type}</Text>
             </Flex>
-          )}
-        </Flex>
-        <Box>
-          {
-            <Text
-              fontSize="2xl"
-              fontWeight="black"
-              marginBottom={2}
-              marginTop="5"
+            <Flex
+              justifyContent="space-between"
+              w="400px"
+              borderBottom="1px"
+              borderColor="gray.100"
+              p="3"
             >
-              Facilites:
-            </Text>
-          }
-
-          <Flex flexWrap="wrap" marginBottom={2}>
-            {amenities.length === 0 && (
-              <Text
-                key={1}
-                fontWeight="bold"
-                color="#6F8F4E"
-                fontSize="l"
-                p="2"
-                bg="#C9E7BD"
-                m="1"
-                mx={"6px"}
-                borderRadius="5"
+              <Text>Purpose</Text>
+              <Text fontWeight="bold">{purpose}</Text>
+            </Flex>
+            {furnishingStatus && (
+              <Flex
+                justifyContent="space-between"
+                w="400px"
+                borderBottom="1px"
+                borderColor="gray.100"
+                p="3"
               >
-                None
-              </Text>
+                <Text>Furnishing Status</Text>
+                <Text fontWeight="bold">{furnishingStatus}</Text>
+              </Flex>
             )}
           </Flex>
+          <Box>
+            {
+              <Text
+                fontSize="2xl"
+                fontWeight="black"
+                marginBottom={2}
+                marginTop="5"
+              >
+                Facilites:
+              </Text>
+            }
 
-          <Flex flexWrap="wrap" marginBottom={2}>
-            {amenities.length !== 0 &&
-              amenities?.map((item) =>
-                item?.amenities?.map((amenity) => (
-                  <Text
-                    key={amenity.text}
-                    fontWeight="semibold"
-                    color="#6F8F4E"
-                    fontSize="15px"
-                    p="2"
-                    bg="#C9E7BD"
-                    m="1"
-                    mx={"6px"}
-                    borderRadius="5"
-                  >
-                    {amenity.text}
-                  </Text>
-                ))
+            <Flex flexWrap="wrap" marginBottom={2}>
+              {amenities.length === 0 && (
+                <Text
+                  key={1}
+                  fontWeight="bold"
+                  color="#6F8F4E"
+                  fontSize="l"
+                  p="2"
+                  bg="#C9E7BD"
+                  m="1"
+                  mx={"6px"}
+                  borderRadius="5"
+                >
+                  None
+                </Text>
               )}
-          </Flex>
+            </Flex>
+
+            <Flex flexWrap="wrap" marginBottom={2}>
+              {amenities.length !== 0 &&
+                amenities?.map((item) =>
+                  item?.amenities?.map((amenity) => (
+                    <Text
+                      key={amenity.text}
+                      fontWeight="semibold"
+                      color="#6F8F4E"
+                      fontSize="15px"
+                      p="2"
+                      bg="#C9E7BD"
+                      m="1"
+                      mx={"6px"}
+                      borderRadius="5"
+                    >
+                      {amenity.text}
+                    </Text>
+                  ))
+                )}
+            </Flex>
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </Fragment>
   );
 };
 

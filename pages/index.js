@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Flex, Button, Text, Box } from "@chakra-ui/react";
 import { baseURL, fetchAPI } from "../utils/fetchAPI";
 import Property from "@/components/Property";
+import { Fragment } from "react";
+import Head from "next/head";
 
 const Banner = ({
   purpose,
@@ -14,36 +16,45 @@ const Banner = ({
   buttonText,
   imageURL,
 }) => (
-  <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
-    <Image
-      src={imageURL}
-      width={500}
-      height={400}
-      alt="banner_img"
-      style={{ borderRadius: "8px" }}
-    />
-    <Box p="5">
-      <Text color="gray.500" fontSize="md" fontWeight="medium">
-        {purpose}
-      </Text>
-      <Text fontSize="20px" fontWeight="semibold">
-        {title1} <br /> {title2}
-      </Text>
-      <Text fontSize="lg" paddingBottom={3} paddingTop={3} color={"gray.700"}>
-        {desc1} <br /> {desc2}
-      </Text>
+  <Fragment>
+    <Head>
+      <title>The Estate Empire - You think We Provide</title>
+      <meta
+        name="description"
+        content="Estate empire lets you grab the opportunity to rent or buy your dream home with the best features possible - The featured section."
+      />
+    </Head>
+    <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
+      <Image
+        src={imageURL}
+        width={500}
+        height={400}
+        alt="banner_img"
+        style={{ borderRadius: "8px" }}
+      />
+      <Box p="5">
+        <Text color="gray.500" fontSize="md" fontWeight="medium">
+          {purpose}
+        </Text>
+        <Text fontSize="20px" fontWeight="semibold">
+          {title1} <br /> {title2}
+        </Text>
+        <Text fontSize="lg" paddingBottom={3} paddingTop={3} color={"gray.700"}>
+          {desc1} <br /> {desc2}
+        </Text>
 
-      <Button
-        paddingX={4}
-        paddingY={4}
-        fontSize="18px"
-        bgColor={"gray.300"}
-        color={"gray.700"}
-      >
-        <Link href={linkName}>{buttonText}</Link>
-      </Button>
-    </Box>
-  </Flex>
+        <Button
+          paddingX={4}
+          paddingY={4}
+          fontSize="18px"
+          bgColor={"gray.300"}
+          color={"gray.700"}
+        >
+          <Link href={linkName}>{buttonText}</Link>
+        </Button>
+      </Box>
+    </Flex>
+  </Fragment>
 );
 
 export default function Home({ propertiesForSale, propertiesForRent }) {
