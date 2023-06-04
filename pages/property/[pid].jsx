@@ -74,7 +74,7 @@ const PropertyDetail = ({
     <Fragment>
       <Head>
         <title>Estate Empire - {title}</title>
-        <meta name="description" content={description.trim(50)} />
+        <meta name="description" content={"Single Property details section"} />
       </Head>
       <Box
         maxWidth={"1000px"}

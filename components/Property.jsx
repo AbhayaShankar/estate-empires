@@ -48,9 +48,19 @@ const Property = ({ property }) => {
             alignItems={"center"}
             justifyContent={"space-between"}
           >
-            <Box>
-              <Avatar size={"sm"} src={agency?.logo?.url} alt={agency?.logo} />
-            </Box>
+            <Image
+              size={"sm"}
+              width={100}
+              height={100}
+              src={agency?.logo?.url}
+              alt={agency?.logo}
+              style={{
+                borderRadius: "50%",
+                objectFit: "contain",
+                height: 40,
+                width: 40,
+              }}
+            />
             <Flex alignItems={"center"}>
               <Box paddingRight={3} color={"green.300"}>
                 {isVerified && <GoVerified />}
