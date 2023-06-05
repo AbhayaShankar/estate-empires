@@ -27,7 +27,6 @@ const Property = ({ property }) => {
       <Flex
         flexWrap="wrap"
         width={400}
-        // height={300}
         p={5}
         paddingTop={0}
         justifyContent={"flex-start"}
