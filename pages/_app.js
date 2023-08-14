@@ -6,9 +6,10 @@ import Layout from "@/components/Layout";
 import { Fragment } from "react";
 import { Router } from "next/router";
 import "../styles/style.css";
+import "../node_modules/nprogress/nprogress.css";
 
 export default function App({ Component, pageProps }) {
-  NProgress.configure({ showSpinner: false });
+  NProgress.configure({ showSpinner: false, easing: "ease" });
 
   Router.events.on("routeChangeStart", () => {
     NProgress.start();
